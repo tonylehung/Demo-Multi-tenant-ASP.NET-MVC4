@@ -1,0 +1,46 @@
+﻿@model IEnumerable<TenantID.Models.Entity.TenantControl>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Manage tenant control</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Tenant User
+        </th>
+        <th>
+            Theme
+        </th>
+        <th>
+            Tenant Schema
+        </th>
+
+        <th>Options</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TenantUser)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Theme)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TenantSchema)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

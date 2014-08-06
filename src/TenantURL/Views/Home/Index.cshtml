@@ -1,0 +1,45 @@
+﻿@using TenantURL.Models.Entity;
+@{
+    ViewBag.Title = "Home Page";
+}
+@if (!string.IsNullOrEmpty(Model.Theme))
+{
+    string linlk = Model.Theme + ".css";
+    <link type="text/css" rel="stylesheet" href="~/Content/@linlk" />
+}
+
+@section featured {
+    <section class="featured">
+        <div class="content-wrapper">
+            <hgroup class="title">
+                <h1>Welcome to <span class="sub">@Model.Theme</span> page</h1><br />
+                <h2>Keep your news</h2>
+            </hgroup>
+            <p>
+                Keep is a service which implements note taking and web surfing.
+                @Html.ActionLink("Try now »", "index", "news", new { tenant = Model.TenantSchema, id = 0 }, new { @class = "btn btn-default" })
+            </p>            
+        </div>
+    </section>
+}
+<h3>We suggest the following:</h3>
+<ol class="round">
+    <li class="one">
+        <h5>Getting Started</h5>
+        Register for an account to be able to login to the Tenant control system<br />
+        @Html.ActionLink("Register now »", "register", "account", new { },  new { @class = "btn btn-default" })
+    </li>
+
+    <li class="two">
+        <h5>Add Tenant schema and connection string</h5>
+        Look at "Tenant control" and click.
+        Add few records to the Tenant control, set TenantUser as username , set Theme , set Schema and set Connection string to each the Tenant record<br />
+        @Html.ActionLink("Tenant control »", "index", "tenant", new {}, new { @class = "btn btn-default" })
+    </li>
+
+    <li class="three">
+        <h5>Try with separate dataset "New"</h5>
+        After the system creates a dataset each corresponding to each user that we've created, you 'll see you have an area to store the new and it's sepatate into different on each data table or also database.<br />
+        @Html.ActionLink("Keep your news »", "index", "news", new { tenant = Model.TenantSchema, id = 0 }, new { @class = "btn btn-default" })
+    </li>
+</ol>
